@@ -1,0 +1,186 @@
+---
+title: Styling
+sidebar:
+    label: Styling
+    order: 4
+---
+
+import CustomCodePreview from "/src/components/CustomCodePreview";
+
+
+The **Navigable List Component** provides a highly customizable styling system through its `listItemStyles` property, allowing developers to define styles and classes for list items based on their states. This section documents the styling options available for individual list items and overall component customization.
+
+## `listItemStyles` Property
+
+The `listItemStyles` property accepts an object of type `IListItemStylesProps`, enabling fine-grained control over the appearance of list items depending on their state (e.g., selected, disabled, focused). Below are the available options:
+
+### Properties
+
+| **Property**        | **Type**       | **Description**                                                                                   |
+|---------------------|----------------|---------------------------------------------------------------------------------------------------|
+| selectedClasses   | string       | CSS class to apply to a selected list item.                                                      |
+| selectedStyle     | CSSProperties| Inline styles to apply to a selected list item.                                                  |
+| disabledClasses   | string       | CSS class to apply to a disabled list item.                                                      |
+| disabledStyle     | CSSProperties| Inline styles to apply to a disabled list item.                                                  |
+| focusedClasses    | string       | CSS class to apply to a focused (hovered or keyboard-selected) list item.                        |
+| focusedStyle      | CSSProperties| Inline styles to apply to a focused list item.                                                   |
+| checkboxClasses   | string       | CSS class to apply to the checkbox input for list items (when checkboxOnMultiple is enabled).  |
+| checkboxStyle     | CSSProperties| Inline styles to apply to the checkbox input for list items.                                     |
+
+### Example Usage
+Below is an example of how to customize the styling of list items based on their states.
+
+
+<CustomCodePreview
+client:load
+client:only="react"
+jsCode={`
+  const RNL = () => {
+    const [selected, setSelected] = React.useState([1]);
+    const [disabled, _setDisabled] = React.useState([0, 1, 3, 9, 999]);
+    const items = [];
+
+    for (let i = 1; i <= 100; i++) {
+      items.push({
+        label: \`option \${i}\`,
+        value: \`option\_\${i}\`,
+      });
+    }
+
+    return (
+        <ReactNavigableList
+          items={items}
+          listItemStyles={{
+            focusedClasses: 'bg-purple-500 text-white',
+            disabledClasses: 'text-[#C7C8CC]',
+            selectedClasses: 'bg-purple-300 text-white'
+          }}
+          selected={selected}
+          disabled={disabled}
+          multiple={false}
+          checkboxOnMultiple={true}
+          onChange={(selected) => {
+            console.log(selected);
+          }}
+          className="flex h-[220px] w-[200px] flex-col justify-between border border-[#BCB8B1] bg-white px-1 py-[2px]"
+        />
+    );
+  };
+  render(<RNL/>)
+`}
+tsCode={`
+  const RNL = () => {
+    const [selected, setSelected] = React.useState<number[]>([1]);
+    const [disabled, _setDisabled] = React.useState<number[]>([0, 1, 3, 9, 999]);
+    const items = [];
+
+    for (let i = 1; i <= 100; i++) {
+      items.push({
+        label: \`option \${i}\`,
+        value: \`option\_\${i}\`,
+      });
+    }
+
+    return (
+        <ReactNavigableList
+          items={items}
+          listItemStyles={{
+            focusedClasses: 'bg-purple-500 text-white',
+            disabledClasses: 'text-[#C7C8CC]',
+            selectedClasses: 'bg-purple-300 text-white'
+          }}
+          selected={selected}
+          disabled={disabled}
+          multiple={false}
+          checkboxOnMultiple={true}
+          onChange={(selected) => {
+            console.log(selected);
+          }}
+          className="flex h-[220px] w-[200px] flex-col justify-between border border-[#BCB8B1] bg-white px-1 py-[2px]"
+        />
+    );
+  };
+  render(<RNL/>)
+`}
+/>
+
+<CustomCodePreview
+client:load
+client:only="react"
+jsCode={`
+  const RNL = () => {
+    const [selected, setSelected] = React.useState([1]);
+    const [disabled, _setDisabled] = React.useState([0, 1, 3, 9, 999]);
+    const items = [];
+
+    for (let i = 1; i <= 100; i++) {
+      items.push({
+        label: \`option \${i}\`,
+        value: \`option\_\${i}\`,
+      });
+    }
+
+    return (
+        <ReactNavigableList
+          items={items}
+          listItemStyles={{
+              disabledClasses: 'text-pink-300',
+              checkboxClasses: 'accent-black'
+            }}
+          listItemStyles={{
+            focusedClasses: 'bg-purple-500 text-white',
+            disabledClasses: 'text-[#C7C8CC]',
+            selectedClasses: 'bg-black text-white'
+          }}
+          selected={selected}
+          disabled={disabled}
+          multiple={true}
+          checkboxOnMultiple={true}
+          onChange={(selected) => {
+            console.log(selected);
+          }}
+          className="flex h-[220px] w-[200px] flex-col justify-between border border-[#BCB8B1] bg-white px-1 py-[2px]"
+        />
+    );
+  };
+  render(<RNL/>)
+`}
+tsCode={`
+  const RNL = () => {
+    const [selected, setSelected] = React.useState<number[]>([1]);
+    const [disabled, _setDisabled] = React.useState<number[]>([0, 1, 3, 9, 999]);
+    const items = [];
+
+    for (let i = 1; i <= 100; i++) {
+      items.push({
+        label: \`option \${i}\`,
+        value: \`option\_\${i}\`,
+      });
+    }
+
+    return (
+        <ReactNavigableList
+          items={items}
+          listItemStyles={{
+              disabledClasses: 'text-pink-300',
+              checkboxClasses: 'accent-black'
+            }}
+          listItemStyles={{
+            focusedClasses: 'bg-purple-500 text-white',
+            disabledClasses: 'text-[#C7C8CC]',
+            selectedClasses: 'bg-black text-white'
+          }}
+          selected={selected}
+          disabled={disabled}
+          multiple={true}
+          checkboxOnMultiple={true}
+          onChange={(selected) => {
+            console.log(selected);
+          }}
+          className="flex h-[220px] w-[200px] flex-col justify-between border border-[#BCB8B1] bg-white px-1 py-[2px]"
+        />
+    );
+  };
+  render(<RNL/>)
+`}
+/>

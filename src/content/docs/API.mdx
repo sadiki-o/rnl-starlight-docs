@@ -1,0 +1,34 @@
+---
+title: API
+sidebar:
+    label: API
+    order: 5
+---
+
+
+### `INavigableListProps`
+
+
+| Property Name                  | Type       | Default      | Description                                                                                         |
+| ------------------------------ | ---------- | ------------ | --------------------------------------------------------------------------------------------------- |
+| className                    | `string`   | -            | Class name for the list container.                                                                   |
+| listItemStyles               | `object`   | -            | Styling/classes of the items/rows depending on their state (selected, disabled, focused).           |
+| items                        | `object[]` | `[]`         | List of items/rows to be fed to the component. Each item should have a `label` and `value` field.   |
+| selected                     | `number[]` | `[]`         | List of selected indexes.                                                                           |
+| disabled                     | `number[]` | `[]`         | List of disabled indexes.                                                                           |
+| maxSelection                 | `number`   | `undefined`  | Limit the maximum selected items when multiple selection is enabled.                                |
+| focusedIndex                 | `number`   | `0`          | Default focused/hovered index.                                                                      |
+| shouldFocusComponent           | `boolean`                                                                                            | Indicates whether the component should capture focus for keyboard interactions.                                                                                                                                                                          | `false`           |
+| multiple                     | `boolean`  | `false`      | Enable multi-select or not.                                                                         |
+| checkboxOnMultiple           | `boolean`  | `false`      | Enable checkboxes for multi-select.                                                                 |
+| keyboardEvents               | `boolean`  | `false`      | Enable keyboard navigation/interactions.                                                            |
+| enableDragToScroll           | `boolean`  | `true`       | Enable scrolling by dragging rows/items with the mouse.                                              |
+| overflowY                    | `boolean`  | `false`      | Enable overflow if you want a scrollable list, else a normal list without scrolling.                |
+| onMouseLeaveResetFocusedIndex | `boolean`  | `false`      | Reset focused index to undefined on mouse leave.                                                     |
+| onChange                     | `function` | -            | Callback function triggered when selected indexes change.                                             |
+| onScroll                     | `function` | -            | Callback function to keep track of the scroll position.                                              |
+| onKeyboardNavigation         | `(currentIndex: number, keyPressed: "ArrowUp" \| "ArrowDown") => boolean | undefined`           | Callback triggered during keyboard navigation. If it returns `true`, the default navigation behavior is prevented.                                                                                                                                       | `undefined`       |
+| enableVirtualization         | `boolean`  | `false`      | Enable virtualization for better performance with large lists.                                       |
+| itemHeight                   | `number`   | `20`         | Height of each item row (required if virtualization is enabled).                                     |
+| windowHeight                 | `number`   | `300`        | Height of the list window (required if virtualization is enabled).                                   |
+| overscan                     | `number`   | `20`         | Number of extra items to render before and after the visible area/range when virtualization is enabled.|                                                |
